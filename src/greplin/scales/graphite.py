@@ -155,12 +155,12 @@ class GraphitePeriodicPusher(threading.Thread, GraphitePusher):
     """Loop forever, pushing out stats."""
     self.graphite.start()
     while True:
-      logging.info('Graphite pusher is sleeping for %d seconds', self.period)
+      logging.debug('Graphite pusher is sleeping for %d seconds', self.period)
       time.sleep(self.period)
-      logging.info('Pushing stats to Graphite')
+      logging.debug('Pushing stats to Graphite')
       try:
         self.push()
-        logging.info('Done pushing stats to Graphite')
+        logging.debug('Done pushing stats to Graphite')
       except:
         logging.exception('Exception while pushing stats to Graphite')
         raise
